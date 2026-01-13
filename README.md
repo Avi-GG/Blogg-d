@@ -16,6 +16,27 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Google Login (OAuth)
+
+This project supports Google sign-in via server-side OAuth routes:
+
+- Start: `/api/auth/google`
+- Callback: `/api/auth/google/callback`
+
+### Step-by-step setup
+
+1. Go to Google Cloud Console → **APIs & Services** → **Credentials**.
+2. Configure **OAuth consent screen** (External is fine for local testing).
+3. Create **Credentials** → **OAuth client ID** → **Web application**.
+4. Add this **Authorized redirect URI**:
+   - `http://localhost:3000/api/auth/google/callback`
+5. Copy the values into `.env`:
+
+   - `GOOGLE_CLIENT_ID`
+   - `GOOGLE_CLIENT_SECRET`
+
+6. Restart the dev server: `npm run dev`.
+
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
