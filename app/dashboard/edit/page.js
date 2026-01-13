@@ -34,13 +34,13 @@ export default function EditBlogPage({ params }) {
 	return (
 		<div className="min-h-screen flex items-center justify-center px-4 py-12">
 			<div className="card-glass p-10 w-full max-w-2xl">
-				<h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2">
+				<h1 className="text-4xl font-bold bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2">
 					Edit Blog
 				</h1>
 				<p className="text-white/60 mb-8">
 					Make changes and publish your updates.
 				</p>
-				<div className="h-px bg-gradient-to-r from-cyan-500/0 via-cyan-500/50 to-cyan-500/0 mb-8" />
+				<div className="h-px bg-linear-to-r from-cyan-500/0 via-cyan-500/50 to-cyan-500/0 mb-8" />
 
 				<form action={handleUpdate} className="space-y-6">
 					<div>

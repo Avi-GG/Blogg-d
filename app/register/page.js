@@ -21,12 +21,28 @@ export default function RegisterPage() {
 
 				<form action={formAction} className="space-y-4">
 					<div>
-						<label className="block text-sm font-semibold text-white/80 mb-2">Email</label>
-						<input className="input-field" name="email" type="email" placeholder="you@example.com" required />
+						<label className="block text-sm font-semibold text-white/80 mb-2">
+							Email
+						</label>
+						<input
+							className="input-field"
+							name="email"
+							type="email"
+							placeholder="you@example.com"
+							required
+						/>
 					</div>
 					<div>
-						<label className="block text-sm font-semibold text-white/80 mb-2">Password</label>
-						<input className="input-field" name="password" type="password" placeholder="Create a strong password" required />
+						<label className="block text-sm font-semibold text-white/80 mb-2">
+							Password
+						</label>
+						<input
+							className="input-field"
+							name="password"
+							type="password"
+							placeholder="Create a strong password"
+							required
+						/>
 					</div>
 
 					{state?.error && (
@@ -46,9 +62,14 @@ export default function RegisterPage() {
 
 				<p className="text-center text-white/70 text-sm mt-6">
 					Already have an account?{" "}
-					<Link href="/login" className="text-cyan-400 hover:text-cyan-300 font-semibold">
+					<Link
+						href="/login"
+						className="text-cyan-400 hover:text-cyan-300 font-semibold"
+					>
 						Login
-				</Link>
-			</p>
+					</Link>
+				</p>
+			</div>
 		</div>
 	);
+}

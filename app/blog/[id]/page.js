@@ -35,7 +35,7 @@ export default async function BlogPage({ params }) {
 					</span>
 				</div>
 
-				<h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
+				<h1 className="text-5xl md:text-6xl font-bold bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
 					{blog.title}
 				</h1>
 
