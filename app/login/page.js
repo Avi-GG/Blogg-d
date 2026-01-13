@@ -25,68 +25,81 @@ export default function LoginPage() {
 	const [state, formAction, pending] = useActionState(login, { error: null });
 
 	return (
-		<div className="card formCard">
-			<h1 className="title" style={{ fontSize: 32 }}>
-				Welcome back
-			</h1>
-			<p className="subtitle" style={{ marginTop: 6 }}>
-				Sign in to write, edit and manage your blogs.
-			</p>
+		<div className="min-h-screen flex items-center justify-center px-4">
+			<div className="card-glass max-w-md w-full p-8">
+				<h1 className="text-4xl font-black bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+					Welcome back
+				</h1>
+				<p className="text-white/70 text-sm mb-8">
+					Sign in to write, edit, and manage your blogs
+				</p>
 
-			<div className="divider" />
+				<a href="/api/auth/google" className="w-full block mb-6">
+					<button className="w-full px-4 py-3 rounded-lg font-bold bg-white text-slate-900 hover:bg-white/90 transition-all shadow-lg flex items-center justify-center gap-2">
+						<GoogleIcon /> Continue with Google
+					</button>
+				</a>
 
-			<a href="/api/auth/google" style={{ display: "block" }}>
-				<button
-					className="btn btnGoogle"
-					type="button"
-					style={{ width: "100%" }}
-				>
-					<GoogleIcon /> Continue with Google
-				</button>
-			</a>
-
-			<div className="divider" />
-
-			<form action={formAction}>
-				<div className="field">
-					<label className="label">Email</label>
-					<input
-						className="input"
-						name="email"
-						type="email"
-						placeholder="you@example.com"
-						required
-					/>
-				</div>
-				<div className="field">
-					<label className="label">Password</label>
-					<input
-						className="input"
-						name="password"
-						type="password"
-						placeholder="••••••••"
-						required
-					/>
+				<div className="relative mb-6">
+					<div className="absolute inset-0 flex items-center">
+						<div className="w-full border-t border-white/10"></div>
+					</div>
+					<div className="relative flex justify-center text-sm">
+						<span className="px-2 bg-gradient text-white/50">Or email</span>
+					</div>
 				</div>
 
-				{state?.error && <p className="error">{state.error}</p>}
+				<form action={formAction} className="space-y-4">
+					<div>
+						<label className="block text-sm font-semibold text-white/80 mb-2">
+							Email
+						</label>
+						<input
+							className="input-field"
+							name="email"
+							type="email"
+							placeholder="you@example.com"
+							required
+						/>
+					</div>
+					<div>
+						<label className="block text-sm font-semibold text-white/80 mb-2">
+							Password
+						</label>
+						<input
+							className="input-field"
+							name="password"
+							type="password"
+							placeholder="••••••••"
+							required
+						/>
+					</div>
 
-				<button
-					type="submit"
-					className="btn btnPrimary"
-					style={{ width: "100%", marginTop: 14 }}
-					disabled={pending}
-				>
-					{pending ? "Signing in…" : "Login"}
-				</button>
-			</form>
+					{state?.error && (
+						<div className="p-3 rounded-lg bg-red-500/20 border border-red-500/40 text-red-300 text-sm">
+							{state.error}
+						</div>
+					)}
 
-			<p className="muted" style={{ marginTop: 12 }}>
-				Don&apos;t have an account?{" "}
-				<Link className="navLink" href="/register">
-					Register
-				</Link>
-			</p>
+					<button
+						type="submit"
+						className="btn-primary w-full"
+						disabled={pending}
+					>
+						{pending ? "Signing in..." : "Login"}
+					</button>
+				</form>
+
+				<p className="text-center text-white/70 text-sm mt-6">
+					Don&apos;t have an account?{" "}
+					<Link
+						href="/register"
+						className="text-cyan-400 hover:text-cyan-300 font-semibold"
+					>
+						Register
+					</Link>
+				</p>
+			</div>
 		</div>
 	);
 }

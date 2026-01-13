@@ -1,3 +1,4 @@
+import "./globals.css";
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { logout } from "./logout/actions";
@@ -9,34 +10,34 @@ export default async function RootLayout({ children }) {
 
 	return (
 		<html lang="en">
-			<body>
-				<header className="navbar">
-					<nav className="navInner">
-						<div className="navLeft">
-							<Link href="/" className="brand" aria-label="Blogg'd Home">
-								<span className="brandText">Blogg&apos;d</span>
+			<body className="bg-gradient min-h-screen text-white">
+				<header className="sticky top-0 z-50 bg-slate-950/60 backdrop-blur-xl border-b border-white/10">
+					<nav className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-6">
+						<div className="flex items-center gap-8">
+							<Link
+								href="/"
+								className="font-black text-3xl text-orange-500 hover:text-orange-400 transition"
+							>
+								Blogg&apos;d
 							</Link>
-
-							<div className="navLinks">
-								<Link className="navLink" href="/">
-									Explore
+							{isLoggedIn && (
+								<Link
+									href="/dashboard"
+									className="text-white/80 hover:text-white transition font-medium text-lg"
+								>
+									Dashboard
 								</Link>
-								{isLoggedIn && (
-									<Link className="navLink" href="/dashboard">
-										Dashboard
-									</Link>
-								)}
-							</div>
+							)}
 						</div>
 
-						<div className="btnRow">
+						<div className="flex items-center gap-3">
 							{!isLoggedIn ? (
-								<Link className="btn btnPrimary" href="/login">
+								<Link href="/login" className="btn-primary">
 									Login
 								</Link>
 							) : (
 								<form action={logout}>
-									<button className="btn" type="submit">
+									<button className="btn-secondary" type="submit">
 										Logout
 									</button>
 								</form>
@@ -45,7 +46,7 @@ export default async function RootLayout({ children }) {
 					</nav>
 				</header>
 
-				<main className="container">{children}</main>
+				<main className="max-w-7xl mx-auto px-4 py-12">{children}</main>
 			</body>
 		</html>
 	);
