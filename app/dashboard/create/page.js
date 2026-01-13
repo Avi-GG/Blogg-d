@@ -10,7 +10,7 @@ export default function CreateBlogPage() {
 				<p className="text-white/60 mb-8">
 					Write something people actually want to read.
 				</p>
-				<div className="h-px bg-gradient-to-r from-purple-500/0 via-purple-500/50 to-purple-500/0 mb-8" />
+				<div className="h-px bg-linear-to-r from-purple-500/0 via-purple-500/50 to-purple-500/0 mb-8" />
 
 				<form action={createBlog} className="space-y-6">
 					<div>

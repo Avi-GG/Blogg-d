@@ -13,7 +13,7 @@ export default function BlogCard({ blog, showActions = false, onDelete }) {
 				{blog.createdAt ? " • " : ""}
 				{blog.createdAt ? new Date(blog.createdAt).toLocaleDateString() : ""}
 			</p>
-			<p className="text-white/80 text-sm flex-grow mb-4 line-clamp-3">
+			<p className="text-white/80 text-sm grow mb-4 line-clamp-3">
 				{blog.excerpt}
 			</p>
 

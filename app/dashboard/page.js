@@ -53,7 +53,7 @@ export default async function DashboardPage() {
 						🧠 Your space • Draft, edit, publish
 					</span>
 				</div>
-				<h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent mb-4">
+				<h1 className="text-5xl font-bold bg-linear-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent mb-4">
 					My Dashboard
 				</h1>
 				<p className="text-lg text-white/70 mb-8 max-w-2xl">
@@ -84,7 +84,7 @@ export default async function DashboardPage() {
 								<h3 className="text-xl font-bold text-white mb-2 line-clamp-2">
 									{blog.title}
 								</h3>
-								<p className="text-white/80 text-sm flex-grow mb-4 line-clamp-3">
+								<p className="text-white/80 text-sm grow mb-4 line-clamp-3">
 									{blog.excerpt}
 								</p>
 								<div className="flex flex-wrap gap-2">
