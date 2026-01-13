@@ -26,19 +26,20 @@ export default async function BlogPage({ params }) {
 	}
 
 	return (
-		<article style={{ maxWidth: 900, margin: "0 auto", padding: 16 }}>
-			<h1 style={{ fontSize: 40, lineHeight: 1.1, marginBottom: 10 }}>
+		<article className="card" style={{ maxWidth: 900, margin: "22px auto" }}>
+			<div className="pill">📖 Full post</div>
+			<h1 className="title" style={{ marginTop: 10 }}>
 				{blog.title}
 			</h1>
-			<div style={{ opacity: 0.7, marginBottom: 20 }}>
+			<div className="meta" style={{ marginTop: 10 }}>
 				<span>By {blog.user?.email ?? "Unknown"}</span>
-				<span style={{ margin: "0 8px" }}>•</span>
+				<span> • </span>
 				<time dateTime={blog.createdAt.toISOString()}>
 					{blog.createdAt.toLocaleString()}
 				</time>
 			</div>
-
-			<div style={{ whiteSpace: "pre-wrap", fontSize: 16, lineHeight: 1.6 }}>
+			<div className="divider" />
+			<div style={{ whiteSpace: "pre-wrap", lineHeight: 1.75, fontSize: 16 }}>
 				{blog.content}
 			</div>
 		</article>

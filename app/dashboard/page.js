@@ -47,35 +47,53 @@ export default async function DashboardPage() {
 
 	return (
 		<div>
-			<h1>My Dashboard</h1>
-			<Link href="/dashboard/create">Create New Blog</Link>
+			<section className="hero">
+				<div className="pill">🧠 Your space • Draft, edit, publish</div>
+				<h1 className="title">My Dashboard</h1>
+				<p className="subtitle">
+					Create posts, polish them, and share them with the world.
+				</p>
+				<div className="btnRow" style={{ marginTop: 14 }}>
+					<Link className="btn btnPrimary" href="/dashboard/create">
+						Create new blog
+					</Link>
+					<Link className="btn" href="/">
+						View public feed
+					</Link>
+				</div>
+			</section>
 
 			{blogs.length === 0 ? (
-				<p>No blogs yet. Create your first blog!</p>
+				<div className="card" style={{ marginTop: 16 }}>
+					<h3 className="cardTitle">No blogs yet</h3>
+					<p className="muted" style={{ marginTop: 8, lineHeight: 1.6 }}>
+						Create your first post and it will show up here.
+					</p>
+				</div>
 			) : (
-				blogs.map((blog) => (
-					<div
-						key={blog.id}
-						style={{ border: "1px solid gray", padding: 12, marginBottom: 10 }}
-					>
-						<h3>{blog.title}</h3>
-						<p>{blog.excerpt}</p>
-
-						<Link href={`/blog/${blog.id}`}>Read full blog</Link>
-
-						<div style={{ marginTop: 8 }}>
-							<Link href={`/dashboard/edit/${blog.id}`}>Edit</Link>
-							<form
-								action={deleteBlog.bind(null, blog.id)}
-								style={{ display: "inline" }}
-							>
-								<button type="submit" style={{ marginLeft: 8 }}>
-									Delete
-								</button>
-							</form>
+				<div className="grid">
+					{blogs.map((blog) => (
+						<div key={blog.id} className="col4">
+							<div className="card">
+								<h3 className="cardTitle">{blog.title}</h3>
+								<p className="cardText">{blog.excerpt}</p>
+								<div className="btnRow" style={{ marginTop: 12 }}>
+									<Link className="btn" href={`/blog/${blog.id}`}>
+										Read
+									</Link>
+									<Link className="btn" href={`/dashboard/edit/${blog.id}`}>
+										Edit
+									</Link>
+									<form action={deleteBlog.bind(null, blog.id)}>
+										<button className="btn btnDanger" type="submit">
+											Delete
+										</button>
+									</form>
+								</div>
+							</div>
 						</div>
-					</div>
-				))
+					))}
+				</div>
 			)}
 		</div>
 	);

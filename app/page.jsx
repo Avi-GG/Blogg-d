@@ -18,19 +18,37 @@ export default async function Home() {
 
 	return (
 		<div>
-			<h1>All Blogs</h1>
+			<section className="hero">
+				<div className="pill">✨ Fresh posts • Read & write</div>
+				<h1 className="title">All Blogs</h1>
+				<p className="subtitle">
+					Discover short, real stories from the community. Sign in to create and
+					manage your own posts.
+				</p>
+			</section>
+
 			{dbError && (
-				<div style={{ marginTop: 12, color: "crimson" }}>
-					<p>Database connection failed (code: {dbError.code ?? "unknown"}).</p>
-					<p>
+				<div
+					className="card"
+					style={{ marginTop: 16, borderColor: "rgba(251, 113, 133, 0.35)" }}
+				>
+					<p className="error">
+						Database connection failed (code: {dbError.code ?? "unknown"}).
+					</p>
+					<p className="muted" style={{ marginTop: 8, lineHeight: 1.6 }}>
 						On Vercel, make sure `DATABASE_URL` is set and your Supabase project
 						is online. You can also test `/api/health/db`.
 					</p>
 				</div>
 			)}
-			{blogs.map((blog) => (
-				<BlogCard key={blog.id} blog={blog} />
-			))}
+
+			<div className="grid">
+				{blogs.map((blog) => (
+					<div key={blog.id} className="col4">
+						<BlogCard blog={blog} />
+					</div>
+				))}
+			</div>
 		</div>
 	);
 }

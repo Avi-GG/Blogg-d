@@ -8,40 +8,44 @@ export default async function RootLayout({ children }) {
 	const isLoggedIn = Boolean(userId?.value);
 
 	return (
-		<html>
+		<html lang="en">
 			<body>
-				<header style={{ borderBottom: "1px solid #ddd" }}>
-					<nav
-						style={{
-							display: "flex",
-							gap: 12,
-							alignItems: "center",
-							justifyContent: "space-between",
-							padding: "12px 16px",
-							maxWidth: 1100,
-							margin: "0 auto",
-						}}
-					>
-						<div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-							<Link href="/">Home</Link>
-							{isLoggedIn && <Link href="/dashboard">Dashboard</Link>}
+				<header className="navbar">
+					<nav className="navInner">
+						<div className="navLeft">
+							<Link href="/" className="brand" aria-label="Blogg'd Home">
+								<span className="brandText">Blogg&apos;d</span>
+							</Link>
+
+							<div className="navLinks">
+								<Link className="navLink" href="/">
+									Explore
+								</Link>
+								{isLoggedIn && (
+									<Link className="navLink" href="/dashboard">
+										Dashboard
+									</Link>
+								)}
+							</div>
 						</div>
 
-						<div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+						<div className="btnRow">
 							{!isLoggedIn ? (
-								<Link href="/login">Login</Link>
+								<Link className="btn btnPrimary" href="/login">
+									Login
+								</Link>
 							) : (
 								<form action={logout}>
-									<button type="submit">Logout</button>
+									<button className="btn" type="submit">
+										Logout
+									</button>
 								</form>
 							)}
 						</div>
 					</nav>
 				</header>
 
-				<main style={{ maxWidth: 1100, margin: "0 auto", padding: 16 }}>
-					{children}
-				</main>
+				<main className="container">{children}</main>
 			</body>
 		</html>
 	);

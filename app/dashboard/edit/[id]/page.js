@@ -25,29 +25,43 @@ export default async function EditBlogPage({ params }) {
 	}
 
 	return (
-		<div>
-			<h1>Edit Blog</h1>
+		<div className="card formCard" style={{ maxWidth: 760 }}>
+			<h1 className="title" style={{ fontSize: 34 }}>
+				Edit Blog
+			</h1>
+			<p className="subtitle" style={{ marginTop: 6 }}>
+				Refine your post and keep it sharp.
+			</p>
+			<div className="divider" />
 
 			<form action={updateBlog.bind(null, blog.id)}>
-				<div>
-					<label>Title</label>
-					<br />
-					<input name="title" defaultValue={blog.title} required />
+				<div className="field">
+					<label className="label">Title</label>
+					<input
+						className="input"
+						name="title"
+						defaultValue={blog.title}
+						required
+					/>
 				</div>
 
-				<div style={{ marginTop: 10 }}>
-					<label>Content</label>
-					<br />
+				<div className="field">
+					<label className="label">Content</label>
 					<textarea
+						className="textarea"
 						name="content"
-						rows={6}
+						rows={10}
 						defaultValue={blog.content}
 						required
 					/>
 				</div>
 
-				<button type="submit" style={{ marginTop: 10 }}>
-					Update
+				<button
+					className="btn btnPrimary"
+					type="submit"
+					style={{ width: "100%", marginTop: 14 }}
+				>
+					Save changes
 				</button>
 			</form>
 		</div>

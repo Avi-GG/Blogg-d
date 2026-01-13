@@ -10,31 +10,55 @@ export default function RegisterPage() {
 	});
 
 	return (
-		<div>
-			<h1>Register</h1>
+		<div className="card formCard">
+			<h1 className="title" style={{ fontSize: 32 }}>
+				Create your account
+			</h1>
+			<p className="subtitle" style={{ marginTop: 6 }}>
+				Start publishing in minutes.
+			</p>
+
+			<div className="divider" />
+
 			<form action={formAction}>
-				<div>
-					<input name="email" type="email" placeholder="Email" required />
-				</div>
-				<div style={{ marginTop: 10 }}>
+				<div className="field">
+					<label className="label">Email</label>
 					<input
+						className="input"
+						name="email"
+						type="email"
+						placeholder="you@example.com"
+						required
+					/>
+				</div>
+				<div className="field">
+					<label className="label">Password</label>
+					<input
+						className="input"
 						name="password"
 						type="password"
-						placeholder="Password"
+						placeholder="Create a strong password"
 						required
 					/>
 				</div>
 
-				{state?.error && (
-					<p style={{ marginTop: 10, color: "crimson" }}>{state.error}</p>
-				)}
+				{state?.error && <p className="error">{state.error}</p>}
 
-				<button type="submit" style={{ marginTop: 10 }} disabled={pending}>
-					Register
+				<button
+					type="submit"
+					className="btn btnPrimary"
+					style={{ width: "100%", marginTop: 14 }}
+					disabled={pending}
+				>
+					{pending ? "Creating…" : "Register"}
 				</button>
 			</form>
-			<p style={{ marginTop: 10 }}>
-				Already have an account? <Link href="/login">Login</Link>
+
+			<p className="muted" style={{ marginTop: 12 }}>
+				Already have an account?{" "}
+				<Link className="navLink" href="/login">
+					Login
+				</Link>
 			</p>
 		</div>
 	);
