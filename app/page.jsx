@@ -1,11 +1,11 @@
 import BlogCard from "@/components/BlogCard";
+import { prisma } from "@/lib/prisma";
 
 export default async function Home() {
-	const res = await fetch("http://localhost:3000/api/blogs", {
-		cache: "no-store",
+	const blogs = await prisma.blog.findMany({
+		orderBy: { createdAt: "desc" },
+		include: { user: { select: { email: true } } },
 	});
-
-	const blogs = await res.json();
 
 	return (
 		<div>
